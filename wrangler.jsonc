@@ -21,7 +21,7 @@
     {
       "binding": "DB",
       "database_name": "the99",
-      "database_id": "7a53dc47-0270-4e1f-b91e-d57eed745bd8",
+      "database_id": "829b27da-30d1-4fb7-b14f-72737f7e3f43",
       "migrations_dir": "migrations"
     }
   ],
