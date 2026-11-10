@@ -18,9 +18,9 @@ export async function requireAdmin() {
   const token = (await cookies()).get('the99_session')?.value;
   if (
     !token ||
-    !db
+    !(await db
       .prepare('SELECT token FROM sessions WHERE token=? AND expires>?')
-      .get(digest(token), Date.now())
+      .get(digest(token), Date.now()))
   )
     redirect('/admin/login');
 }

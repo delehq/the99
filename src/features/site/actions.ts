@@ -30,7 +30,7 @@ export async function saveSitePage(
     const values = z
       .record(z.string(), z.string())
       .parse(JSON.parse(input.data.values));
-    const result = updateDocument({
+    const result = await updateDocument({
       ...input.data,
       values,
       published: data.get('published') === 'on',

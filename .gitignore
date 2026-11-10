@@ -13,3 +13,8 @@ source-posts.json
 
 .impeccable/hook.cache.json
 *.log
+
+.open-next/
+.wrangler/
+.dev.vars*
+!.dev.vars.example

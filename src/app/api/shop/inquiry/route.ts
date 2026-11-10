@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
         { message: 'Check your name, email, and selected products.' },
         { status: 422 },
       );
-    const products = getProducts();
+    const products = await getProducts();
     let total = 0;
     const descriptions = [];
     for (const item of input.data.items) {
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
         `${item.quantity} × ${product.name}: $${(product.price * item.quantity).toFixed(2)}`,
       );
     }
-    const saved = createInquiry({
+    const saved = await createInquiry({
       name: input.data.name,
       email: input.data.email,
       kind: 'shop',

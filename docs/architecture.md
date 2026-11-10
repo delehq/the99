@@ -45,6 +45,10 @@ docs/                     Architecture and operations
 
 Route files coordinate presentation. Feature services own business rules. Repositories own database queries. Authorization must run inside each protected service or action, including exports and uploads; hiding navigation is insufficient.
 
+## Implemented Cloudflare runtime
+
+The application runs as a Next.js Worker using `@opennextjs/cloudflare`. All repositories use asynchronous D1 bindings. Database schema and the imported source documents are versioned SQL migrations in `migrations/`; no module writes schema or seed records during requests. Content mutations use transactional D1 batches, including optimistic revision guards and audit writes. Uploaded images are decoded and transformed through the Images binding, stored privately in R2, and served through the media route. Static source assets are Worker assets. See [deployment instructions](cloudflare.md).
+
 ## Proposed infrastructure — not configured yet
 
 - PostgreSQL for durable relational records, indexed queries, migrations, and backups.
@@ -55,7 +59,7 @@ Route files coordinate presentation. Feature services own business rules. Reposi
 - A background queue for email, media processing, and reporting work when needed.
 - Error monitoring, structured logs, health checks, and database restore procedures.
 
-Use separate development, staging, and production environments. Keep secrets server-side and outside version control. Deploy the Next.js server to hosting that supports its selected runtime; hosting is undecided.
+Use separate development, staging, and production environments. Keep secrets server-side and outside version control. Deploy the Next.js server to hosting that supports its selected runtime; the selected deployment target is Cloudflare Workers.
 
 ## Dashboard scope proposal
 

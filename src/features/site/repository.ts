@@ -1,9 +1,6 @@
 import 'server-only';
 import * as cheerio from 'cheerio';
 import { db } from '@/server/db';
-import imported from './generated/documents.json';
-import layouts from './generated/layouts.json';
-import { createHash } from 'node:crypto';
 export type SiteDocument = {
   path: string;
   title: string;
@@ -28,13 +25,13 @@ export type ShopProduct = {
   price: number;
   image: string;
 };
-export function getProducts(): ShopProduct[] {
+export async function getProducts(): Promise<ShopProduct[]> {
   return (
-    db
+    (await db
       .prepare(
         "SELECT path,html FROM site_documents WHERE kind='product' AND published=1",
       )
-      .all() as { path: string; html: string }[]
+      .all()) as { path: string; html: string }[]
   )
     .map((doc) => {
       const $ = cheerio.load(doc.html);
@@ -55,68 +52,24 @@ export function getProducts(): ShopProduct[] {
     })
     .filter((p) => p.id && Number.isFinite(p.price) && p.price > 0);
 }
-const insert = db.prepare(
-  'INSERT INTO site_documents(path,title,html,body_class,styles,kind) VALUES (?,?,?,?,?,?) ON CONFLICT(path) DO UPDATE SET title=excluded.title,html=excluded.html,body_class=excluded.body_class,styles=excluded.styles,kind=excluded.kind WHERE site_documents.revision=1',
-);
-const seedVersion =
-  'source-' +
-  createHash('sha256')
-    .update(JSON.stringify([imported, layouts]))
-    .digest('hex');
-if (
-  !db.prepare('SELECT name FROM site_migrations WHERE name=?').get(seedVersion)
-) {
-  db.exec('BEGIN IMMEDIATE');
-  try {
-    if (
-      !db
-        .prepare('SELECT name FROM site_migrations WHERE name=?')
-        .get(seedVersion)
-    ) {
-      for (const item of imported)
-        insert.run(
-          item.path,
-          item.title,
-          item.html,
-          item.bodyClass,
-          JSON.stringify(item.styles),
-          item.kind,
-        );
-      const layoutInsert = db.prepare(
-        'INSERT INTO site_layouts(path,header_path,footer_path,banner_path) VALUES (?,?,?,?) ON CONFLICT(path) DO UPDATE SET header_path=excluded.header_path,footer_path=excluded.footer_path,banner_path=excluded.banner_path',
-      );
-      for (const item of layouts)
-        layoutInsert.run(
-          item.path,
-          item.headerPath,
-          item.footerPath,
-          item.bannerPath,
-        );
-      db.prepare('INSERT INTO site_migrations(name) VALUES (?)').run(
-        seedVersion,
-      );
-    }
-    db.exec('COMMIT');
-  } catch (error) {
-    db.exec('ROLLBACK');
-    throw error;
-  }
-}
-export function getLayout(path: string) {
-  return db.prepare('SELECT * FROM site_layouts WHERE path=?').get(path) as
+export async function getLayout(path: string) {
+  return (await db
+    .prepare('SELECT * FROM site_layouts WHERE path=?')
+    .get(path)) as
     | { header_path: string; footer_path: string; banner_path: string | null }
     | undefined;
 }
-export function getDocument(path: string) {
-  return db.prepare('SELECT * FROM site_documents WHERE path=?').get(path) as
-    SiteDocument | undefined;
+export async function getDocument(path: string) {
+  return (await db
+    .prepare('SELECT * FROM site_documents WHERE path=?')
+    .get(path)) as SiteDocument | undefined;
 }
-export function listDocuments() {
-  return db
+export async function listDocuments() {
+  return (await db
     .prepare(
       "SELECT path,title,kind,published,revision,updated_at FROM site_documents ORDER BY CASE WHEN kind='shared' THEN 0 ELSE 1 END,path",
     )
-    .all() as Omit<SiteDocument, 'html' | 'styles' | 'body_class'>[];
+    .all()) as Omit<SiteDocument, 'html' | 'styles' | 'body_class'>[];
 }
 export function getFields(html: string): EditableField[] {
   const $ = cheerio.load(html, null, false);
@@ -183,14 +136,14 @@ function validUrl(value: string, image = false) {
     return false;
   }
 }
-export function updateDocument(input: {
+export async function updateDocument(input: {
   path: string;
   title: string;
   revision: number;
   published: boolean;
   values: Record<string, string>;
 }) {
-  const doc = getDocument(input.path);
+  const doc = await getDocument(input.path);
   if (!doc) return { error: 'Page not found.' };
   if (doc.revision !== input.revision)
     return {
@@ -229,50 +182,43 @@ export function updateDocument(input: {
         node.closest('a[data-lightbox]').attr('href', value);
     }
   }
-  db.exec('BEGIN IMMEDIATE');
-  try {
-    const saved = db
-      .prepare(
-        'UPDATE site_documents SET title=?,html=?,published=?,revision=revision+1,updated_at=CURRENT_TIMESTAMP WHERE path=? AND revision=?',
-      )
-      .run(
+  const result = await db.batch([
+    {
+      sql: 'INSERT INTO site_revisions(path,title,html,published,revision) SELECT path,title,html,published,revision FROM site_documents WHERE path=? AND revision=?',
+      values: [doc.path, input.revision],
+    },
+    {
+      sql: 'UPDATE site_documents SET title=?,html=?,published=?,revision=revision+1,updated_at=CURRENT_TIMESTAMP WHERE path=? AND revision=?',
+      values: [
         input.title,
         $.html(),
         input.published ? 1 : 0,
         doc.path,
         input.revision,
-      );
-    if (!saved.changes) {
-      db.exec('ROLLBACK');
-      return {
-        error:
-          'This page changed while you were editing. Reload and try again.',
-      };
-    }
-    db.prepare(
-      'INSERT INTO site_revisions(path,title,html,published,revision) VALUES (?,?,?,?,?)',
-    ).run(doc.path, doc.title, doc.html, doc.published, doc.revision);
-    db.prepare('INSERT INTO audit(action) VALUES (?)').run(
-      `Updated site page: ${doc.path} (revision ${doc.revision + 1})`,
-    );
-    db.exec('COMMIT');
-    return { revision: doc.revision + 1 };
-  } catch (error) {
-    db.exec('ROLLBACK');
-    throw error;
-  }
+      ],
+    },
+    {
+      sql: 'INSERT INTO audit(action) SELECT ? WHERE changes()>0',
+      values: [`Updated site page: ${doc.path} (revision ${doc.revision + 1})`],
+    },
+  ]);
+  if (!result[1].meta.changes)
+    return {
+      error: 'This page changed while you were editing. Reload and try again.',
+    };
+  return { revision: doc.revision + 1 };
 }
-export function searchDocuments(query: string) {
-  const documents = db
+export async function searchDocuments(query: string) {
+  const documents = (await db
     .prepare(
       "SELECT path,title,html FROM site_documents WHERE published=1 AND kind!='shared'",
     )
-    .all() as { path: string; title: string; html: string }[];
-  const posts = db
+    .all()) as { path: string; title: string; html: string }[];
+  const posts = (await db
     .prepare(
       "SELECT slug,title,body FROM content WHERE kind='post' AND published=1",
     )
-    .all() as { slug: string; title: string; body: string }[];
+    .all()) as { slug: string; title: string; body: string }[];
   return [
     ...documents,
     ...posts.map((post) => ({

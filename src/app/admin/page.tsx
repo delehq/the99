@@ -35,17 +35,25 @@ export default async function Admin({
   await requireAdmin();
   const q = await searchParams;
   const tab = tabs.includes(q.tab || '') ? q.tab! : 'overview';
-  const content = listContent().filter((p) => p.kind === 'post');
-  const documents = tab === 'site' ? listDocuments() : [];
-  const sitePage = tab === 'site' && q.edit ? getDocument(q.edit) : undefined;
+  const content = (await listContent()).filter((p) => p.kind === 'post');
+  const documents = tab === 'site' ? await listDocuments() : [];
+  const documentLayouts = new Map(
+    await Promise.all(
+      documents
+        .filter((doc) => !doc.path.startsWith('@'))
+        .map(async (doc) => [doc.path, await getLayout(doc.path)] as const),
+    ),
+  );
+  const sitePage =
+    tab === 'site' && q.edit ? await getDocument(q.edit) : undefined;
   const siteLayout =
     sitePage && !sitePage.path.startsWith('@')
-      ? getLayout(sitePage.path)
+      ? await getLayout(sitePage.path)
       : undefined;
-  const { counts, pages } = getOverview();
-  const inquiries = tab === 'inquiries' ? listInquiries() : [];
-  const subscribers = tab === 'subscribers' ? listSubscribers() : [];
-  const activity = tab === 'activity' ? listActivity() : [];
+  const { counts, pages } = await getOverview();
+  const inquiries = tab === 'inquiries' ? await listInquiries() : [];
+  const subscribers = tab === 'subscribers' ? await listSubscribers() : [];
+  const activity = tab === 'activity' ? await listActivity() : [];
   const selected = content.find((p) => p.slug === q.edit);
   return (
     <div className="admin-shell">
@@ -173,11 +181,11 @@ export default async function Admin({
                                 Edit page
                               </Link>
                               {!doc.path.startsWith('@') &&
-                                getLayout(doc.path)?.banner_path && (
+                                documentLayouts.get(doc.path)?.banner_path && (
                                   <>
                                     <br />
                                     <Link
-                                      href={`/admin?tab=site&edit=${encodeURIComponent(getLayout(doc.path)!.banner_path!)}`}
+                                      href={`/admin?tab=site&edit=${encodeURIComponent(documentLayouts.get(doc.path)!.banner_path!)}`}
                                     >
                                       Title & breadcrumbs
                                     </Link>

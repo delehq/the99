@@ -12,24 +12,25 @@ import { addSubscriber } from '@/features/subscribers/repository';
 export async function login(data: FormData) {
   const ip = (await headers()).get('x-forwarded-for')?.split(',')[0] || 'local';
   const now = Date.now();
-  const attempt = db
+  const attempt = (await db
     .prepare('SELECT count,reset_at FROM attempts WHERE ip=?')
-    .get(ip) as { count: number; reset_at: number } | undefined;
+    .get(ip)) as { count: number; reset_at: number } | undefined;
   if (attempt && attempt.reset_at > now && attempt.count >= 5)
     redirect('/admin/login?error=limit');
   if (!validPassword(String(data.get('password') || ''))) {
-    db.prepare(
-      'INSERT INTO attempts(ip,count,reset_at) VALUES (?,1,?) ON CONFLICT(ip) DO UPDATE SET count=CASE WHEN reset_at<? THEN 1 ELSE count+1 END,reset_at=CASE WHEN reset_at<? THEN excluded.reset_at ELSE reset_at END',
-    ).run(ip, now + 900000, now, now);
+    await db
+      .prepare(
+        'INSERT INTO attempts(ip,count,reset_at) VALUES (?,1,?) ON CONFLICT(ip) DO UPDATE SET count=CASE WHEN reset_at<? THEN 1 ELSE count+1 END,reset_at=CASE WHEN reset_at<? THEN excluded.reset_at ELSE reset_at END',
+      )
+      .run(ip, now + 900000, now, now);
     redirect('/admin/login?error=credentials');
   }
-  db.prepare('DELETE FROM attempts WHERE ip=?').run(ip);
+  await db.prepare('DELETE FROM attempts WHERE ip=?').run(ip);
   const token = randomBytes(32).toString('hex');
-  db.prepare('DELETE FROM sessions WHERE expires<?').run(now);
-  db.prepare('INSERT INTO sessions VALUES (?,?)').run(
-    digest(token),
-    now + 28800000,
-  );
+  await db.prepare('DELETE FROM sessions WHERE expires<?').run(now);
+  await db
+    .prepare('INSERT INTO sessions VALUES (?,?)')
+    .run(digest(token), now + 28800000);
   (await cookies()).set('the99_session', token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
@@ -43,7 +44,7 @@ export async function logout() {
   const jar = await cookies();
   const token = jar.get('the99_session')?.value;
   if (token)
-    db.prepare('DELETE FROM sessions WHERE token=?').run(digest(token));
+    await db.prepare('DELETE FROM sessions WHERE token=?').run(digest(token));
   jar.delete('the99_session');
   redirect('/admin/login');
 }
@@ -70,7 +71,7 @@ export async function saveContent(data: FormData) {
     redirect('/admin?tab=content&error=home');
   if (!p.originalSlug && p.kind !== 'post')
     redirect('/admin?tab=content&error=content');
-  if (!saveContentRecord({ ...p, published }))
+  if (!(await saveContentRecord({ ...p, published })))
     redirect('/admin?tab=content&error=conflict');
   revalidatePath('/', 'layout');
   redirect('/admin?tab=content&saved=1');
@@ -87,13 +88,13 @@ export async function submitInquiry(data: FormData) {
     .safeParse(Object.fromEntries(data));
   if (!parsed.success) redirect('/fellowship?error=invalid');
   const p = parsed.data;
-  if (!createInquiry(p)) redirect(`/${p.kind}?error=rate`);
+  if (!(await createInquiry(p))) redirect(`/${p.kind}?error=rate`);
   redirect(`/${p.kind}?sent=1`);
 }
 export async function subscribe(data: FormData) {
   const email = z.email().max(254).safeParse(data.get('email'));
   if (!email.success || data.get('consent') !== 'on')
     redirect('/?subscription=invalid#newsletter');
-  addSubscriber(email.data);
+  await addSubscriber(email.data);
   redirect('/?subscription=success#newsletter');
 }

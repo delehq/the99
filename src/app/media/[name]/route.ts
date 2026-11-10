@@ -1,6 +1,4 @@
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
-import { mediaDirectory } from '@/server/media';
+import { readImage } from '@/server/media';
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ name: string }> },
@@ -9,11 +7,12 @@ export async function GET(
   if (!/^[a-f0-9-]{36}\.webp$/.test(name))
     return new Response(null, { status: 404 });
   try {
-    const image = await readFile(join(mediaDirectory(), name));
-    return new Response(image, {
+    const image = await readImage(name);
+    if (!image) return new Response(null, { status: 404 });
+    return new Response(image.body as unknown as ReadableStream, {
       headers: {
         'Content-Type': 'image/webp',
-        'Content-Length': String(image.length),
+        'Content-Length': String(image.size),
         'Cache-Control': 'public,max-age=31536000,immutable',
         'X-Content-Type-Options': 'nosniff',
       },

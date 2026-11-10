@@ -1,6 +1,7 @@
-import { spawn } from 'node:child_process';
+import { spawn, execFileSync } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
-import { mkdtempSync, rmSync, readFileSync, existsSync } from 'node:fs';
+import { mkdtempSync, readFileSync, existsSync } from 'node:fs';
+import { rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve, sep } from 'node:path';
 import assert from 'node:assert/strict';
@@ -9,16 +10,27 @@ const tempRoot = resolve(tmpdir());
 const dir = mkdtempSync(join(tempRoot, 'the99-smoke-'));
 const password = randomBytes(24).toString('hex');
 const base = 'http://localhost:3101';
+const wrangler = resolve('node_modules/wrangler/bin/wrangler.js');
+execFileSync(
+  process.execPath,
+  [wrangler, 'd1', 'migrations', 'apply', 'DB', '--local', '--persist-to', dir],
+  { stdio: 'pipe' },
+);
 const server = spawn(
   process.execPath,
-  ['node_modules/next/dist/bin/next', 'start', '-p', '3101'],
+  [
+    wrangler,
+    'dev',
+    '--local',
+    '--port',
+    '3101',
+    '--persist-to',
+    dir,
+    '--var',
+    `ADMIN_PASSWORD:${password}`,
+  ],
   {
-    env: {
-      ...process.env,
-      ADMIN_PASSWORD: password,
-      DATABASE_PATH: join(dir, 'test.sqlite'),
-      MEDIA_PATH: join(dir, 'uploads'),
-    },
+    env: { ...process.env, WRANGLER_SEND_METRICS: 'false' },
     stdio: 'pipe',
   },
 );
@@ -110,7 +122,7 @@ try {
     } catch {}
     await new Promise((r) => setTimeout(r, 200));
   }
-  assert.ok(ready, logs);
+  assert.ok(ready, logs.replaceAll(password, '[redacted]'));
   for (const doc of docs.filter((d) => !d.path.startsWith('@'))) {
     const path = doc.path === '/' ? '/' : doc.path.replace(/\/$/, '');
     const response = await get(path);
@@ -446,8 +458,7 @@ try {
   const aboutLayout = layouts.find((item) => item.path === '/about-us/');
   const bannerEdit = await editorState(aboutLayout.bannerPath, cookie);
   const bannerKey = Object.keys(bannerEdit.values).find(
-    (key) =>
-      key.includes(':text:') && bannerEdit.values[key].includes('About'),
+    (key) => key.includes(':text:') && bannerEdit.values[key].includes('About'),
   );
   assert.ok(bannerKey);
   bannerEdit.values[bannerKey] = 'Audited about banner';
@@ -517,7 +528,11 @@ try {
     headers: { Origin: base, Cookie: cookie },
     body: upload,
   });
-  assert.equal(uploaded.status, 200);
+  assert.equal(
+    uploaded.status,
+    200,
+    logs.replaceAll(password, '[redacted]').slice(-5000),
+  );
   const media = await uploaded.json();
   const served = await get(media.url);
   assert.equal(served.status, 200);
@@ -554,9 +569,25 @@ try {
     `PASS: ${layouts.length} source routes with correct headers/footers/banners; ${assets.length} local assets; product gallery/tabs; carousel targets; admin/auth; publishing and SEO discovery; CMS spacing/conflicts/escaping; isolated banner/footer edits; synchronized product catalog; forms/inquiries; analytics; uploads.`,
   );
 } finally {
-  server.kill();
-  await new Promise((r) => server.once('exit', r));
+  if (server.exitCode === null) {
+    const exited = new Promise((r) => server.once('exit', r));
+    if (process.platform === 'win32')
+      execFileSync('taskkill', ['/pid', String(server.pid), '/T', '/F'], {
+        stdio: 'ignore',
+      });
+    else server.kill();
+    await exited;
+  }
   const target = resolve(dir);
   assert.ok(target.startsWith(tempRoot + sep) && target !== tempRoot);
-  rmSync(target, { recursive: true, force: true });
+  try {
+    await rm(target, {
+      recursive: true,
+      force: true,
+      maxRetries: 10,
+      retryDelay: 300,
+    });
+  } catch (error) {
+    console.warn(`Smoke temporary files retained at ${target}: ${error.code}`);
+  }
 }

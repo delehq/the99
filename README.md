@@ -4,7 +4,11 @@ A Next.js App Router and TypeScript rebuild of the public The 99 website, with a
 
 ## Run locally
 
-Requires Node.js 24. Run `npm install`, copy `.env.example` to `.env.local`, and set a unique `ADMIN_PASSWORD` of at least 16 characters. Run `npm run dev` and open http://localhost:3000. Dashboard: http://localhost:3000/admin. No default administrator password exists.
+Requires Node.js 24. Run `npm ci`, copy `.dev.vars.example` to `.dev.vars`, and set a unique `ADMIN_PASSWORD` of at least 16 characters. Run `npm run db:migrate:local`, then `npm run dev` and open http://localhost:3000. Dashboard: http://localhost:3000/admin. No default administrator password exists. Local development uses emulated D1, R2, and Images bindings; it does not write to production resources.
+
+## Cloudflare deployment
+
+The application targets Cloudflare Workers through OpenNext, with D1 for all records, R2 for uploaded media, and the Images binding for validation/resizing/WebP conversion. See [Cloudflare setup](docs/cloudflare.md) for account setup, resource creation, secrets, and build settings.
 
 ## Public website
 
@@ -18,7 +22,7 @@ React implements carousels, synchronized testimonial/photo sliders, mobile navig
 
 - Site pages: edit known text nodes, image URLs/alt text, links, page titles, and publication status without discarding the source layout.
 - Shared navigation/logos and footer/contact details have their own editors.
-- Upload JPG, PNG, and WebP replacements. Images are validated, resized, re-encoded to WebP, and stored outside the public source directory.
+- Upload JPG, PNG, and WebP replacements. Images are validated, resized, re-encoded to WebP, and stored in the private R2 media bucket and served through `/media/`.
 - Optimistic revision checks prevent conflicting saves. Previous document versions and administrative changes are recorded. A revision rollback interface is not implemented.
 - New blog posts support drafts and publishing; imported original articles are managed in Site pages.
 - Inquiry inbox, subscriber records from the initial version, measured page-view reports, and audit activity.
@@ -33,9 +37,10 @@ Existing customer accounts and password recovery have not been migrated. Their l
 
 ## Checks
 
-- `npm run build`: production build.
+- `npm run build:worker`: Next.js production build and OpenNext Worker bundle.
+- `npm run preview`: run the built application in the local Workers runtime.
 - `npm run typecheck`: strict TypeScript.
-- `npm run test:smoke`: isolated HTTP workflow and asset checks, after a build. Uses a temporary database and media directory on port 3101.
+- `npm run test:smoke`: isolated HTTP workflow and asset checks, after `npm run build:worker`. Applies migrations to temporary local D1/R2 state and runs Wrangler on port 3101.
 
 CI runs build, TypeScript, and smoke checks. Browser tools returned no available browser; screenshot comparison, responsive rendering, and keyboard interaction still require browser verification. Build/test success is not a visual-fidelity certification.
 
@@ -47,6 +52,6 @@ Imported seed updates apply only to documents still at revision 1; edited docume
 
 ## Production boundary
 
-The app uses Node's SQLite API and local media storage for this first runnable version. It needs persistent disk and a single application instance. Do not use ephemeral serverless disks or scale independent instances with separate databases. Configure PostgreSQL/shared storage, managed identity with MFA and individual roles, shared rate limits, mail delivery, observability, backups, retention/deletion policies, and restore testing before enterprise production rollout. See `docs/architecture.md`.
+The runtime uses Cloudflare D1 and R2 rather than Node SQLite or local disk. Schema and source-content seeds are applied with versioned migrations before deployment, never while serving a request. D1 batches keep content edits, revision snapshots, and audit entries atomic. Configure managed identity with MFA and individual roles, mail delivery, observability, backups, retention/deletion policies, and restore testing before enterprise production rollout. See `docs/architecture.md` and `docs/cloudflare.md`.
 
 Source imagery and styles come from the user-provided website. Asset provenance is recorded in `docs/source-assets.json`. No private WordPress records or historical analytics export has been supplied. Public view counters now reflect this installation's measured views.

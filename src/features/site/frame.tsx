@@ -6,7 +6,7 @@ import { Tracker } from '@/components/tracker';
 import { getPosts } from '@/server/db';
 import * as cheerio from 'cheerio';
 import { getPageViews } from '@/features/analytics/repository';
-export function ReferenceFrame({
+export async function ReferenceFrame({
   path,
   children,
   showBanner = true,
@@ -15,11 +15,11 @@ export function ReferenceFrame({
   children?: React.ReactNode;
   showBanner?: boolean;
 }) {
-  const doc = getDocument(path);
+  const doc = await getDocument(path);
   if (!doc || !doc.published) notFound();
-  const products = getProducts();
-  const layout = getLayout(path);
-  const header = getDocument(layout?.header_path || '@header');
+  const products = await getProducts();
+  const layout = await getLayout(path);
+  const header = await getDocument(layout?.header_path || '@header');
   const shell = cheerio.load(header?.html || '', null, false);
   shell('li').removeClass('current-menu-item current_page_item');
   shell('a').removeAttr('aria-current');
@@ -30,16 +30,16 @@ export function ReferenceFrame({
       shell(el).closest('li').addClass('current-menu-item');
     }
   });
-  const footer = getDocument(layout?.footer_path || '@footer');
+  const footer = await getDocument(layout?.footer_path || '@footer');
   const banner =
     showBanner && layout?.banner_path
-      ? getDocument(layout.banner_path)
+      ? await getDocument(layout.banner_path)
       : undefined;
-  const posts = path === '/blog-1/' ? getPosts() : [];
+  const posts = path === '/blog-1/' ? await getPosts() : [];
   let html = doc.html;
   if (html.includes('pxl-count-view')) {
     const article = cheerio.load(html, null, false);
-    article('.pxl-count-view').text(String(getPageViews(path)));
+    article('.pxl-count-view').text(String(await getPageViews(path)));
     html = article.html();
   }
   if (path.startsWith('/shop/my-account/')) {

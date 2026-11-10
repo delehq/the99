@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       path.startsWith('/admin')
     )
       return new Response(null, { status: 400 });
-    recordView(path);
+    await recordView(path);
     return new Response(null, { status: 204 });
   } catch {
     return new Response(null, { status: 400 });

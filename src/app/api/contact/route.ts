@@ -45,10 +45,10 @@ export async function POST(req: NextRequest) {
       );
     const p = input.data;
     if (
-      !createInquiry({
+      !(await createInquiry({
         ...p,
         message: p.subject ? `${p.subject}\n\n${p.message}` : p.message,
-      })
+      }))
     )
       return NextResponse.json(
         { message: 'Please wait a minute before sending another message.' },

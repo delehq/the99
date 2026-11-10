@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next';
 import { listDocuments } from '@/features/site/repository';
 import { getPosts } from '@/server/db';
 export const dynamic = 'force-dynamic';
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const pages = listDocuments()
+  const pages = (await listDocuments())
     .filter(
       (doc) =>
         doc.published &&
@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
   return [
     ...pages,
-    ...getPosts().map((post) => ({
+    ...(await getPosts()).map((post) => ({
       url: new URL(`/blog/${post.slug}`, base).href,
       lastModified: new Date(post.updated_at + 'Z'),
     })),
