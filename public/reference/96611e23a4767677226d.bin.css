@@ -1,0 +1,126 @@
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url("/reference/6c238ad86bd394d1f840.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url("/reference/3dba31ce8eb394edd2de.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/reference/66c2dd3245ec12c124e7.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/reference/3b639e5307a09b208154.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/reference/5fa2d0ed25ea76c8d044.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/reference/71d33567cfe582c853fe.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/reference/4098b71318717f802fb7.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/reference/247bf9372dd425b69fbb.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/reference/83dbf7f39f6b57eaff03.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("/reference/e2eb18787dbffe4dd1bd.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("/reference/a9c3a61981848f313920.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/reference/a7c9487694eec4e62f70.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/reference/8e8838a4c114dd9f7f17.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/reference/be48103df8eeaf767eab.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/reference/a836f026b7d52bd7855c.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/reference/c9eb5177f319ea569bec.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/reference/11755abd1ec62636b69a.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/reference/5283938864fe10b255f7.ttf") format('truetype');
+}

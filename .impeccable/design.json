@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T00:00:00Z",
+  "title": "Design System: The 99",
+  "tokenSource": "../DESIGN.md",
+  "extensions": {
+    "modes": {
+      "public-source": { "scope": ".reference-site plus stored body_class and source-* identifier", "authority": "Ordered document styles and public/reference/page-*.css; source theme, plugin, and local font assets", "fonts": ["Kanit", "Montserrat", "Sora"], "note": "Widget overrides and route-specific source CSS take precedence over sampled tokens." },
+      "partnership": { "scope": "Source partnership document", "authority": "Its imported page CSS", "note": "Independent black/gold treatment; preserve source colors and layout." },
+      "admin": { "scope": ".admin-ui", "authority": "src/app/admin/admin.css", "fonts": ["Playfair Display", "DM Sans"], "note": "Existing paper/green management interface; no public redesign authority." }
+    },
+    "responsiveSources": ["Source document ordered stylesheet list", "public/reference/page-*.css", "public/reference/runtime.css", "src/features/site/runtime.tsx", "src/app/admin/admin.css"],
+    "breakpoints": [
+      { "name": "runtime-slider-sm", "value": "576px" },
+      { "name": "runtime-slider-md", "value": "768px" },
+      { "name": "runtime-slider-lg", "value": "992px" },
+      { "name": "runtime-slider-xl", "value": "1200px" },
+      { "name": "runtime-slider-xxl", "value": "1400px" },
+      { "name": "runtime-article-mobile-max", "value": "767px" },
+      { "name": "admin-mobile-max", "value": "760px" },
+      { "name": "admin-tablet-max", "value": "1000px" }
+    ],
+    "focus": { "public": "3px solid var(--primary-color,#ff3d00), offset 4px", "admin": "3px solid #94733e, offset 4px" },
+    "motion": [{ "name": "reduced-motion", "value": "prefers-reduced-motion: reduce", "purpose": "Runtime CSS disables source animations and transitions; slider speed becomes zero." }],
+    "evidence": { "method": "Code inspection and bounded source CSS samples", "visualVerification": false, "inventories": ["docs/source-audit.json", "docs/source-assets.json"] }
+  },
+  "components": [
+    {
+      "name": "Admin Primary Button", "kind": "button", "refersTo": "admin-button", "description": "Management action only; public buttons retain source styles.",
+      "html": "<button class=\"ds-admin-primary\">Save page</button>",
+      "css": ".ds-admin-primary{display:inline-flex;align-items:center;justify-content:space-between;gap:32px;min-height:50px;padding:14px 24px;border:1px solid #375440;background:#375440;color:white;font:500 14px 'DM Sans',Arial,sans-serif;cursor:pointer;transition:background .2s}.ds-admin-primary:hover{background:#263e2e}.ds-admin-primary:focus-visible{outline:3px solid #94733e;outline-offset:4px}.ds-admin-primary:disabled{opacity:.65;cursor:wait}"
+    },
+    {
+      "name": "Public Migration Skip Link", "kind": "nav", "description": "Keyboard entry to source content without replacing source navigation.",
+      "html": "<a class=\"ds-skip\" href=\"#pxl-content-main\">Skip to content</a>",
+      "css": ".ds-skip{display:inline-block;background:white;color:black;padding:12px 20px}.ds-skip:focus-visible{outline:3px solid #ff3d00;outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "overview": "Recreate the source website across its public pages, preserving its content, composition, imagery, and route-specific styling. The public visual authority is the imported HTML and local source CSS, not the former green-and-cream reinterpretation. The management interface is independent and scoped beneath .admin-ui.",
+    "dos": ["Do use the affected document's source CSS and asset mappings as visual authority.", "Do preserve original body classes, source identifiers, stylesheet order, content, and imagery.", "Do keep public migration overrides and administrative styles separately scoped.", "Do preserve keyboard access, reduced-motion behavior, and clear save/upload feedback."],
+    "donts": ["Don't replace route-specific public styles with one invented palette or spacing system.", "Don't apply the former editorial public redesign to source pages.", "Don't claim visual verification from code inspection."]
+  }
+}

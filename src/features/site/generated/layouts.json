@@ -1,0 +1,188 @@
+[
+  {
+    "path": "/partner-with-the-99/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": null
+  },
+  {
+    "path": "/gallery/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-2cd46469bf"
+  },
+  {
+    "path": "/contact-us/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-ae5848da57"
+  },
+  {
+    "path": "/",
+    "headerPath": "@header",
+    "footerPath": "@footer",
+    "bannerPath": null
+  },
+  {
+    "path": "/about-us/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-2592",
+    "bannerPath": "@banner-4a42131baa"
+  },
+  {
+    "path": "/blog-1/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-0a87d82f64"
+  },
+  {
+    "path": "/temp-shop/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-9844aef59d"
+  },
+  {
+    "path": "/service/love/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-11d6c182ef"
+  },
+  {
+    "path": "/service/compassion/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-95c367e2ed"
+  },
+  {
+    "path": "/shop/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-adfd12a909"
+  },
+  {
+    "path": "/service/guidance/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-43420cc757"
+  },
+  {
+    "path": "/service/peace/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-ba9db87491"
+  },
+  {
+    "path": "/service/trust/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-e980f6873a"
+  },
+  {
+    "path": "/service/surrender/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-dd30cf9850"
+  },
+  {
+    "path": "/author/the99/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-6a427d1b57"
+  },
+  {
+    "path": "/shop/cart/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-36738f5efe"
+  },
+  {
+    "path": "/shop/my-account/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-e533d0016f"
+  },
+  {
+    "path": "/the-99-movement-living-the-gospel-beyond-church-walls/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-eaa5551593"
+  },
+  {
+    "path": "/why-fellowship-at-the-99-will-transform-your-faith-journey/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-cbc88f5d2a"
+  },
+  {
+    "path": "/shop/checkout/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-b758e1169e"
+  },
+  {
+    "path": "/the-99-a-new-kind-of-faith-community-rooted-in-purpose/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-5e033e5c11"
+  },
+  {
+    "path": "/category/the-99/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-56ff9bc992"
+  },
+  {
+    "path": "/product/branded-sign-board/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-25ee7c1dfd"
+  },
+  {
+    "path": "/product/the-99-branded-bag/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-908214a337"
+  },
+  {
+    "path": "/product/the-99-branded-cap/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-45b6cc85c2"
+  },
+  {
+    "path": "/product/the-99-branded-pen/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-5e566433c9"
+  },
+  {
+    "path": "/shop/my-account/lost-password/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-0b6cab0354"
+  },
+  {
+    "path": "/product-category/uncategorized/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-d5c27da201"
+  },
+  {
+    "path": "/product-tag/creative/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-5bd16caf91"
+  },
+  {
+    "path": "/product-tag/fashion/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-9b6f067ad7"
+  },
+  {
+    "path": "/product-tag/style/",
+    "headerPath": "@header-12940",
+    "footerPath": "@footer-9627",
+    "bannerPath": "@banner-8e5b883d1a"
+  }
+]

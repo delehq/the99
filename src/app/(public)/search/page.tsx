@@ -1,0 +1,5 @@
+import { searchDocuments } from '@/features/site/repository';
+import { ReferenceFrame } from '@/features/site/frame';
+export const dynamic='force-dynamic';
+export const metadata={title:'Search'};
+export default async function Search({searchParams}:{searchParams:Promise<{s?:string}>}){const {s=''}=await searchParams;const query=s.trim().slice(0,100);const results=query.length>1?searchDocuments(query):[];return <ReferenceFrame path="/blog-1/" showBanner={false}><main id="pxl-content-main" className="migration-article"><h1>Search The 99</h1><form action="/search"><label htmlFor="search">Search the site</label><input name="s" id="search" defaultValue={query} required minLength={2} maxLength={100}/><button>Search</button></form>{query&&<p>{results.length} results for “{query}”</p>}{results.map(r=><article className="migration-search-result" key={r.path}><h2><a href={r.path}>{r.title}</a></h2><p>{r.excerpt}…</p></article>)}{query&&!results.length&&<p>No matching pages. Try another search term.</p>}</main></ReferenceFrame>;}

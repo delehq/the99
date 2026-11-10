@@ -1,0 +1,15 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "montserrat",
+        "createdAt": "2026-11-09T19:07:37.697Z",
+        "reason": "User confirmed a faithful rebuild of the existing site and all pages; Montserrat is supplied by the original site styles and is intentionally retained for fidelity."
+      }
+    ]
+  }
+}

@@ -1,0 +1,1518 @@
+{
+  "scope": "Source markup/content comparison; not browser or visual verification.",
+  "routes": [
+    {
+      "path": "/partner-with-the-99/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "16071"
+          ],
+          "containers": 1,
+          "widgets": 1,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/gallery/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "10233"
+          ],
+          "containers": 4,
+          "widgets": 3,
+          "images": 60,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/contact-us/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "9592"
+          ],
+          "containers": 5,
+          "widgets": 13,
+          "images": 2,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940",
+            "16666"
+          ],
+          "containers": 2,
+          "widgets": 4,
+          "images": 4,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "16127"
+          ],
+          "containers": 39,
+          "widgets": 40,
+          "images": 14,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "12979"
+          ],
+          "containers": 7,
+          "widgets": 9,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/about-us/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "11668"
+          ],
+          "containers": 32,
+          "widgets": 39,
+          "images": 2,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "2592"
+          ],
+          "containers": 20,
+          "widgets": 25,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/blog-1/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "10240"
+          ],
+          "containers": 4,
+          "widgets": 3,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/temp-shop/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "10586"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/service/love/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "10595"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 1,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "12563"
+          ],
+          "containers": 3,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/service/compassion/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "10595"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 1,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "12564"
+          ],
+          "containers": 3,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/shop/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 4,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/service/guidance/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "10595"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 1,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "11837"
+          ],
+          "containers": 3,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/service/peace/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "10595"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 1,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "12565"
+          ],
+          "containers": 2,
+          "widgets": 2,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/service/trust/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "10595"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 1,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "11838"
+          ],
+          "containers": 3,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/service/surrender/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "10595"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 1,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "12566"
+          ],
+          "containers": 3,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/author/the99/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/shop/cart/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/shop/my-account/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/the-99-movement-living-the-gospel-beyond-church-walls/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "10252"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [
+            "17800"
+          ],
+          "containers": 1,
+          "widgets": 1,
+          "images": 6,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/why-fellowship-at-the-99-will-transform-your-faith-journey/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "10252"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 6,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/shop/checkout/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/the-99-a-new-kind-of-faith-community-rooted-in-purpose/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "10252"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 6,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/category/the-99/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/product/branded-sign-board/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "15950"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 1,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 4,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/product/the-99-branded-bag/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "15950"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 1,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 4,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/product/the-99-branded-cap/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "15950"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 1,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 4,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/product/the-99-branded-pen/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "15950"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 1,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 4,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/shop/my-account/lost-password/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/product-category/uncategorized/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 4,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/product-tag/creative/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 4,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/product-tag/fashion/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 4,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    },
+    {
+      "path": "/product-tag/style/",
+      "checks": [
+        {
+          "region": "header",
+          "sourceTemplates": [
+            "12940"
+          ],
+          "containers": 1,
+          "widgets": 2,
+          "images": 3,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "banner",
+          "sourceTemplates": [
+            "9594"
+          ],
+          "containers": 1,
+          "widgets": 3,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "main",
+          "sourceTemplates": [],
+          "containers": 0,
+          "widgets": 0,
+          "images": 4,
+          "matched": true,
+          "errors": []
+        },
+        {
+          "region": "footer",
+          "sourceTemplates": [
+            "9627"
+          ],
+          "containers": 7,
+          "widgets": 8,
+          "images": 0,
+          "matched": true,
+          "errors": []
+        }
+      ],
+      "matched": true
+    }
+  ]
+}

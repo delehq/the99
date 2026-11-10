@@ -1,0 +1,265 @@
+@font-face {
+  font-family: "Flaticon";
+  src: url("/reference/e5fa2ee5d66d5f53d021.eot");
+  src: url("/reference/bf9c4ef2006087ee9cc7.eot") format("embedded-opentype"),
+       url("/reference/622711bff7594a1a144e.woff2") format("woff2"),
+       url("/reference/bdb4a550fc927a57ace9.woff") format("woff"),
+       url("/reference/f6ba958a445f037b8d67.ttf") format("truetype"),
+       url("/reference/c8dfc66795df0a55874b.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("/reference/0e75a84ebf7bafbd4075.svg") format("svg");
+  }
+}
+
+.reference-site .pxl-icon-active i.flaticon {
+    display: inline-flex;
+}
+
+.reference-site [class^="flaticon-"], .reference-site [class*=" flaticon-"] {
+    display: inline-flex;
+}
+
+.reference-site [class^="flaticon-"]:before, .reference-site [class*=" flaticon-"]:before, .reference-site [class^="flaticon-"]:after, .reference-site [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-size: inherit;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.reference-site .flaticon-right-arrow:before {
+    content: "\f101";
+}
+.reference-site .flaticon-viber:before {
+    content: "\f102";
+}
+.reference-site .flaticon-up-right-arrow:before {
+    content: "\f103";
+}
+.reference-site .flaticon-user:before {
+    content: "\f104";
+}
+.reference-site .flaticon-chat:before {
+    content: "\f105";
+}
+.reference-site .flaticon-right-arrow-1:before {
+    content: "\f106";
+}
+.reference-site .flaticon-checked:before {
+    content: "\f107";
+}
+.reference-site .flaticon-right-chevron:before {
+    content: "\f108";
+}
+.reference-site .flaticon-left-chevron:before {
+    content: "\f109";
+}
+.reference-site .flaticon-star:before {
+    content: "\f10a";
+}
+.reference-site .flaticon-right-arrow-2:before {
+    content: "\f10b";
+}
+.reference-site .flaticon-results:before {
+    content: "\f10c";
+}
+.reference-site .flaticon-statisctics:before {
+    content: "\f10d";
+}
+.reference-site .flaticon-seo:before {
+    content: "\f10e";
+}
+.reference-site .flaticon-graphic:before {
+    content: "\f10f";
+}
+.reference-site .flaticon-target:before {
+    content: "\f110";
+}
+.reference-site .flaticon-long-arrow-right:before {
+    content: "\f111";
+}
+.reference-site .flaticon-it:before {
+    content: "\f112";
+}
+.reference-site .flaticon-innovation:before {
+    content: "\f113";
+}
+.reference-site .flaticon-production:before {
+    content: "\f114";
+}
+.reference-site .flaticon-call:before {
+    content: "\f115";
+}
+.reference-site .flaticon-play-button:before {
+    content: "\f116";
+}
+.reference-site .flaticon-phone-call:before {
+    content: "\f117";
+}
+.reference-site .flaticon-location-pin:before {
+    content: "\f118";
+}
+.reference-site .flaticon-arrow-up:before {
+    content: "\f119";
+}
+.reference-site .flaticon-top:before {
+    content: "\f11a";
+}
+.reference-site .flaticon-heading:before {
+    content: "\f11b";
+}
+.reference-site .flaticon-arrow-up-1:before {
+    content: "\f11c";
+}
+.reference-site .flaticon-technical-support:before {
+    content: "\f11d";
+}
+.reference-site .flaticon-team:before {
+    content: "\f11e";
+}
+.reference-site .flaticon-loupe:before {
+    content: "\f11f";
+}
+.reference-site .flaticon-right-arrow-3:before {
+    content: "\f120";
+}
+.reference-site .flaticon-right-arrow-4:before {
+    content: "\f121";
+}
+.reference-site .flaticon-management:before {
+    content: "\f122";
+}
+.reference-site .flaticon-digital-marketing:before {
+    content: "\f123";
+}
+.reference-site .flaticon-technical-support-1:before {
+    content: "\f124";
+}
+.reference-site .flaticon-email-marketing:before {
+    content: "\f125";
+}
+.reference-site .flaticon-web-hosting:before {
+    content: "\f126";
+}
+.reference-site .flaticon-digital-marketing-1:before {
+    content: "\f127";
+}
+.reference-site .flaticon-startup:before {
+    content: "\f128";
+}
+.reference-site .flaticon-maintenance:before {
+    content: "\f129";
+}
+.reference-site .flaticon-presentation:before {
+    content: "\f12a";
+}
+.reference-site .flaticon-ui-design:before {
+    content: "\f12b";
+}
+.reference-site .flaticon-front-development:before {
+    content: "\f12c";
+}
+.reference-site .flaticon-information-technology:before {
+    content: "\f12d";
+}
+.reference-site .flaticon-targeted:before {
+    content: "\f12e";
+}
+.reference-site .flaticon-innovation-1:before {
+    content: "\f12f";
+}
+.reference-site .flaticon-right-arrow-5:before {
+    content: "\f130";
+}
+.reference-site .flaticon-viber-1:before {
+    content: "\f131";
+}
+.reference-site .flaticon-quote:before {
+    content: "\f132";
+}
+.reference-site .flaticon-checked-1:before {
+    content: "\f133";
+}
+.reference-site .flaticon-icon-menu:before {
+    content: "\f134";
+}
+.reference-site .flaticon-breadcrumb:before {
+    content: "\f135";
+}
+.reference-site .flaticon-calendar:before {
+    content: "\f136";
+}
+.reference-site .flaticon-folder:before {
+    content: "\f137";
+}
+.reference-site .flaticon-quote-1:before {
+    content: "\f138";
+}
+.reference-site .flaticon-right-arrow-6:before {
+    content: "\f139";
+}
+.reference-site .flaticon-left-arrow:before {
+    content: "\f13a";
+}
+.reference-site .flaticon-graphic-design:before {
+    content: "\f13b";
+}
+.reference-site .flaticon-marketing:before {
+    content: "\f13c";
+}
+.reference-site .flaticon-branding:before {
+    content: "\f13d";
+}
+.reference-site .flaticon-shopping-bag:before {
+    content: "\f13e";
+}
+.reference-site .flaticon-trolley:before {
+    content: "\f13f";
+}
+.reference-site .flaticon-share:before {
+    content: "\f140";
+}
+.reference-site .flaticon-bag-view:before {
+    content: "\f141";
+}
+.reference-site .flaticon-email:before {
+    content: "\f142";
+}
+.reference-site .flaticon-phone:before {
+    content: "\f143";
+}
+.reference-site .flaticon-placeholder:before {
+    content: "\f144";
+}
+.reference-site .flaticon-quote-2:before {
+    content: "\f145";
+}
+.reference-site .flaticon-abstract:before {
+    content: "\f146";
+}
+.reference-site .flaticon-next:before {
+    content: "\f147";
+}
+.reference-site .flaticon-statistics:before {
+    content: "\f148";
+}
+.reference-site .flaticon-right-arrow-7:before {
+    content: "\f149";
+}
+.reference-site .flaticon-cloud-computing:before {
+    content: "\f14a";
+}
+.reference-site .flaticon-users:before {
+    content: "\f14b";
+}
+.reference-site .flaticon-badge:before {
+    content: "\f14c";
+}
+.reference-site .flaticon-iconbox:before {
+    content: "\f14d";
+}

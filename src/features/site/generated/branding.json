@@ -1,0 +1,17 @@
+{
+  "icon": [
+    {
+      "url": "/reference/fa45faec1e1b0610d25e.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "url": "/reference/100a3cec82ee4913b311.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "apple": [
+    { "url": "/reference/362d97f5cf6cb8d3c1ed.png", "type": "image/png" }
+  ]
+}

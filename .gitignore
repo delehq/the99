@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+.data/
+reference.html
+.reference/
+source-pages.json
+source-posts.json
+
+.impeccable/hook.cache.json
+*.log

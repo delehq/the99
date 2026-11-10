@@ -1,0 +1,40 @@
+{
+  "name": "the99",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test:smoke": "node scripts/smoke.mjs",
+    "audit:source": "node scripts/compare-source.mjs",
+    "test:domain": "node scripts/domain-checks.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "next": "^16.4.5",
+    "postcss": "^8.5.32",
+    "postcss-prefix-selector": "^2.2.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sanitize-html": "^2.18.1",
+    "server-only": "^0.0.1",
+    "sharp": "^0.35.5",
+    "swiper": "^14.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/sanitize-html": "^2.16.2",
+    "prettier": "^3.9.10",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}
