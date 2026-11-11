@@ -1,11 +1,19 @@
 import { spawn, execFileSync } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
-import { mkdtempSync, readFileSync, existsSync } from 'node:fs';
+import {
+  mkdtempSync,
+  readFileSync,
+  existsSync,
+  writeFileSync,
+  cpSync,
+} from 'node:fs';
 import { rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve, sep } from 'node:path';
 import assert from 'node:assert/strict';
 import * as cheerio from 'cheerio';
+import sharp from 'sharp';
+import { getPlatformProxy } from 'wrangler';
 const tempRoot = resolve(tmpdir());
 const dir = mkdtempSync(join(tempRoot, 'the99-smoke-'));
 const password = randomBytes(24).toString('hex');
@@ -16,11 +24,57 @@ execFileSync(
   [wrangler, 'd1', 'migrations', 'apply', 'DB', '--local', '--persist-to', dir],
   { stdio: 'pipe' },
 );
+// Use synthetic fixtures in isolated R2: tests never require a production bucket or local site images.
+const imageInventory = JSON.parse(
+  readFileSync('src/features/site/generated/images.json', 'utf8'),
+);
+const proxy = await getPlatformProxy({
+  configPath: resolve('wrangler.jsonc'),
+  persist: { path: join(dir, 'v3') },
+});
+const fixtures = new Map();
+for (const image of imageInventory) {
+  if (!fixtures.has(image.contentType)) {
+    const format = image.contentType.split('/')[1].replace('jpeg', 'jpg');
+    const bytes =
+      format === 'svg+xml'
+        ? Buffer.from(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2"><rect width="2" height="2" fill="red"/></svg>',
+          )
+        : await sharp({
+            create: { width: 2, height: 2, channels: 4, background: '#ff0000' },
+          })
+            .toFormat(format)
+            .toBuffer();
+    fixtures.set(image.contentType, bytes);
+  }
+  await proxy.env.MEDIA.put(image.key, fixtures.get(image.contentType), {
+    httpMetadata: { contentType: image.contentType },
+  });
+}
+await proxy.dispose();
+// Exclude original images from this test build so every image request must use R2.
+const testAssets = join(dir, 'assets');
+const originalAssets = resolve('.open-next/assets');
+const imagePaths = new Set(
+  imageInventory.map((image) => resolve(originalAssets, '.' + image.url)),
+);
+cpSync(originalAssets, testAssets, {
+  recursive: true,
+  filter: (source) => !imagePaths.has(resolve(source)),
+});
+const testConfig = JSON.parse(readFileSync('wrangler.jsonc', 'utf8'));
+testConfig.main = resolve('.open-next/worker.js');
+testConfig.assets.directory = testAssets;
+const testConfigPath = join(dir, 'wrangler.jsonc');
+writeFileSync(testConfigPath, JSON.stringify(testConfig));
 const server = spawn(
   process.execPath,
   [
     wrangler,
     'dev',
+    '--config',
+    testConfigPath,
     '--local',
     '--port',
     '3101',
@@ -206,10 +260,39 @@ try {
       .map((i, el) => $(el).attr('src'))
       .get())
       if (src.startsWith('/reference/'))
-        assert.ok(existsSync('public' + src), src);
+        assert.ok(
+          existsSync('public' + src) ||
+            imageInventory.some((image) => image.url === src),
+          src,
+        );
   }
   for (const asset of assets)
-    assert.ok(existsSync('public' + asset.local), asset.local);
+    assert.ok(
+      existsSync('public' + asset.local) ||
+        imageInventory.some((image) => image.url === asset.local),
+      asset.local,
+    );
+  for (const image of imageInventory) {
+    const response = await get(image.url);
+    assert.equal(response.status, 200, image.url);
+    assert.equal(response.headers.get('x-image-storage'), 'r2', image.url);
+    assert.equal(response.headers.get('content-type'), image.contentType);
+    assert.deepEqual(
+      Buffer.from(await response.arrayBuffer()),
+      fixtures.get(image.contentType),
+    );
+    const conditional = await fetch(base + image.url, {
+      headers: { 'If-None-Match': response.headers.get('etag') },
+    });
+    assert.equal(conditional.status, 304, image.url);
+    const head = await fetch(base + image.url, { method: 'HEAD' });
+    assert.equal(head.status, 200);
+    assert.equal((await head.arrayBuffer()).byteLength, 0);
+  }
+  assert.equal(
+    (await get('/reference/not-an-inventoried-image.png')).status,
+    404,
+  );
   assert.equal((await get('/missing')).status, 404);
   assert.equal((await get('/about')).status, 307, 'legacy alias');
   assert.equal((await get('/admin')).headers.get('location'), '/admin/login');
@@ -520,7 +603,7 @@ try {
   const upload = new FormData();
   upload.set(
     'image',
-    new Blob([readFileSync('public/images/logo.png')], { type: 'image/png' }),
+    new Blob([fixtures.get('image/png')], { type: 'image/png' }),
     'logo.png',
   );
   const uploaded = await fetch(base + '/api/media', {
@@ -566,7 +649,7 @@ try {
     'anonymous upload rejected',
   );
   console.log(
-    `PASS: ${layouts.length} source routes with correct headers/footers/banners; ${assets.length} local assets; product gallery/tabs; carousel targets; admin/auth; publishing and SEO discovery; CMS spacing/conflicts/escaping; isolated banner/footer edits; synchronized product catalog; forms/inquiries; analytics; uploads.`,
+    `PASS: ${layouts.length} source routes with correct headers/footers/banners; ${assets.length} local assets; product gallery/tabs; carousel targets; admin/auth; publishing and SEO discovery; CMS spacing/conflicts/escaping; isolated banner/footer edits; synchronized product catalog; forms/inquiries; analytics; uploads; all 125 original image URLs delivered from isolated R2 with ETag/HEAD support.`,
   );
 } finally {
   if (server.exitCode === null) {

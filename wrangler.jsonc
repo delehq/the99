@@ -36,5 +36,6 @@
   },
   "vars": {
     "NEXT_PUBLIC_SITE_URL": "https://the99.99globalict.workers.dev"
-  }
+  },
+  "account_id": "2b6bed261775603f31e0c3e5aa165c16"
 }

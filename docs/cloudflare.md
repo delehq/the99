@@ -36,3 +36,14 @@ If the previous installation contains real SQLite records or uploaded files, exp
 ## Diagnosing a 500
 
 Run `npx wrangler tail the99` while requesting the site. Verify `DB`, `MEDIA`, `IMAGES`, and `WORKER_SELF_REFERENCE` bindings; apply migrations; verify the admin secret. A successful build alone does not establish that account resources are provisioned or that the live site works.
+
+
+## Moving the original website images into R2
+
+The 125 original image URLs are inventoried in `src/features/site/generated/images.json` (about 41 MB). Keys include SHA-256 hashes to avoid overwriting existing uploads. The image routes preserve `/reference/<name>` and `/images/<name>` URLs, including CSS backgrounds and favicons, so existing D1 documents and editor fields need no URL migration. Fonts and styles remain Worker assets.
+
+Run `npm run images:migrate -- --prune` after signing Wrangler into the correct account. The script uploads images to `the99-media`, downloads each object, and checks its SHA-256 digest and byte length. It removes local images only after every object passes verification. It does not delete anything in R2. Then run `npm run build:worker` and `npm run test:smoke`, commit the image removals, and deploy. Do not remove the originals or deploy image deletions before this completes. If interrupted, rerun the command; content-addressed keys make repeat uploads safe. Use `--verify-only` to check existing R2 objects without uploading.
+
+The first migration requires the original local files. After removal, source bytes live in R2; the repository keeps their inventory and original-source provenance, not image binaries. Older Git commits still contain historical copies; this migration does not rewrite repository history. The smoke test seeds synthetic images into isolated local R2, excludes all original images from test Worker assets, and checks every image URL and conditional request.
+
+R2 centralizes storage; it does not inherently outperform the previous CDN-served static assets. Responses include ETags and browser caching. Hash-named reference images are cached for a year; legacy named images use a one-hour TTL. A production custom domain and appropriate Cloudflare cache settings can add edge caching. Image resizing/modern-format delivery can be addressed separately after migration.
